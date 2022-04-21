@@ -1,10 +1,11 @@
 {
-  "name": "databaseService",
+  "name": "databaseservice",
   "version": "1.0.0",
   "description": "Service for communication with the database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Finn Markwitz",
   "license": "ISC",

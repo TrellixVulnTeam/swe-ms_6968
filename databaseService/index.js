@@ -1,18 +1,14 @@
 const express = require('express');
 const app = express();
-const sqlite3 = require('sqlite3').verbose();
 const { Pool, Client } = require('pg');
 
 const pool = new Pool({
     user: 'postgres',
-    host: 'localhost',
+    host: 'SWE_PostgresDB',
     database: 'home_app',
     password: 'postgres',
     port: 5432,
   })
-
-
-
 
 const cors = require('cors');
 app.use(cors());
@@ -25,26 +21,18 @@ const axios = require('axios');
 const lists = [];
 const digitalDocuments = [];
 
-
-
-
-
-
 app.get('/lists', (req, res) => {
     pool.query('SELECT * FROM home_list;', (err, dbRes) => {
         res.json(dbRes.rows);
     });
 });
 
-
-
-
 app.get('/documents', async (req, res) => {
+    console.log('DB_LOG: Documents were requested. Forwarding request.')
     pool.query('SELECT * FROM documents;', (err, dbRes) => {
         res.json(dbRes.rows);
     });
 });
-
 
 app.post('/document', (req, res) => {
     try{
